@@ -1,0 +1,11 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Name=Avahi SNMP Selector
+GenericName=SNMP host browser and selector
+Icon=network-wired
+Exec=avahi-snmp-selector
+Terminal=false
+Categories=Network;RemoteAccess;GTK;
+StartupNotify=true
+

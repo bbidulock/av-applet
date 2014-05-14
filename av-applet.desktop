@@ -1,0 +1,12 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Name=Avahi System Tray Applet
+GenericName=mDNS/SDS Applet
+Icon=network-wired
+Exec=av-applet
+Terminal=false
+Categories=TrayIcon;Network;Monitor;
+StartupNotify=true
+NotShowIn=GNOME;KDE;XFCE;LXDE;
+X-GNOME-Autostart-enabled=true

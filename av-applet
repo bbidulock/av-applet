@@ -8,6 +8,9 @@ use Net::DBus;
 use Net::DBus::GLib;
 use Net::Libdnet::Intf;
 
+my @files = Gtk2::Rc->get_default_files();
+Gtk2::Rc->set_default_files(@files, "$ENV{HOME}/.gtkrc-2.0.xde");
+
 Gtk2->init;
 Gtk2::Notify->init("av-applet");
 
@@ -640,5 +643,76 @@ use strict;
 
 my $app = Av::Application->new;
 
+sub reparse {
+	my ($root,$property) = @_;
+	my ($type,$format,@data) = $root->property_get($property,undef,0,255,FALSE);
+	if ($type and $data[0]) {
+		Gtk2::Rc->reparse_all;
+		Gtk2::Rc->parse_string("gtk-theme-name=\"$data[0]\"");
+	}
+}
+
+{
+	my $manager = Gtk2::Gdk::DisplayManager->get;
+	my $dpy = $manager->get_default_display;
+	my $screen = $dpy->get_default_screen;
+	my $root = $screen->get_root_window;
+	my $property = Gtk2::Gdk::Atom->new(_XDE_THEME_NAME=>FALSE);
+
+	$root->set_events([qw(property-change-mask structure-mask substructure-mask)]);
+
+	Gtk2::Gdk::Event->handler_set(sub{
+		my ($event,$data) = @_;
+		if (($event->type eq 'client-message' and $event->message_type->name eq "_GTK_READ_RCFILES") ||
+		    ($event->type eq 'property-notify' and $event->atom->name eq "_XDE_THEME_NAME")) {
+			reparse($root,$property);
+			return;
+		}
+		Gtk2->main_do_event($event);
+	},$root);
+
+	reparse($root,$property);
+}
+
 Gtk2->main;
 
+1;
+
+__END__
+
+=head1 NAME
+
+av-applet - an avahi mDSN/SDS system tray applet
+
+=head1 SYNOPSIS
+
+av-applet, avahi-ssh-selector, avahi-rfd-selector, avahi-snmp-selector, avahi-xdmcp-selector
+
+=head1 DESCRIPTION
+
+B<av-applet> is a small perl Gtk2 application that installs an icon
+into the system tray and provides the ability to browse  mDNS/SDS
+services and hosts using a graphical interface.  It also provides
+for desktop notifications when the status of services or hosts change.
+
+When invoked as B<avahi-ssh-selector>, B<av-applet> pops up the SSH selector.
+
+When invoked as B<avahi-rdf-selector>, B<av-applet> pops up the RFD selector.
+
+When invoked as B<avahi-snmp-selector>, B<av-applet> pops up the SNMP selector.
+
+When invoked as B<avahi-xdmcp-selector>, B<av-applet> pops up the XDMCP selector.
+
+=head1 SEE ALSO
+
+L<avahi-daemon(8)>
+
+=head1 LICENSE
+
+perl/GPL
+
+=head1 AUTHOR
+
+Brian F. G. Bidulock <bidulock@openss7.org>
+
+=cut

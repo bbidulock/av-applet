@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Name=Avahi RFB Selector
+GenericName=RFB host browser and selector
+Icon=network-wired
+Exec=avahi-rfb-selector
+Terminal=false
+Categories=Network;RemoteAccess;GTK;
+StartupNotify=true

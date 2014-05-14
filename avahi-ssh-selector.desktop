@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Name=Avahi SSH Selector
+GenericName=SSH host browser and selector
+Icon=network-wired
+Exec=avahi-ssh-selector
+Terminal=false
+Categories=Network;RemoteAccess;GTK;
+StartupNotify=true
