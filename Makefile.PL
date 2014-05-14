@@ -8,15 +8,13 @@ if (-d ".git") {
 }
 
 WriteMakefile(
-	NAME => q(avahi-applet),
+	NAME => q(av-applet),
 	VERSION => $VERSION,
 	LICENSE => 'perl',
 	EXE_FILES => [qw(
-		avahi-applet
-		avahi.pl
+		av-applet
 		avahi-rfb-selector
 		avahi-snmp-selector
-		avahi-ssh
 		avahi-ssh-selector
 	)],
 	PREREQ_PM => {
@@ -38,11 +36,10 @@ sub MY::postamble {
 install:: install_desktop
 
 install_desktop:
-	install -Dm644 avahi-applet.desktop "\$(DESTDIR)/etc/xdg/autostart/avahi-applet.desktop"
-	install -Dm644 avahi-applet.desktop "\$(DESTDIR)/usr/share/applications/avahi-applet.desktop"
+	install -Dm644 av-applet.desktop "\$(DESTDIR)/etc/xdg/autostart/av-applet.desktop"
+	install -Dm644 av-applet.desktop "\$(DESTDIR)/usr/share/applications/av-applet.desktop"
 	install -Dm644 avahi-rfb-selector.desktop "\$(DESTDIR)/usr/share/applications/avahi-rfb-selector.desktop"
 	install -Dm644 avahi-snmp-selector.desktop "\$(DESTDIR)/usr/share/applications/avahi-snmp-selector.desktop"
-	install -Dm644 avahi-ssh.desktop "\$(DESTDIR)/usr/share/applications/avahi-ssh.desktop"
 	install -Dm644 avahi-ssh-selector.desktop "\$(DESTDIR)/usr/share/applications/avahi-ssh-selector.desktop"
 
 MAKE_FRAG
