@@ -1,0 +1,39 @@
+AV-APPLET(1)          User Contributed Perl Documentation         AV-APPLET(1)
+
+
+
+NAME
+       av-applet - an avahi mDSN/SDS system tray applet
+
+SYNOPSIS
+       av-applet, avahi-ssh-selector, avahi-rfd-selector, avahi-snmp-selector,
+       avahi-xdmcp-selector
+
+DESCRIPTION
+       av-applet is a small perl Gtk2 application that installs an icon into
+       the system tray and provides the ability to browse  mDNS/SDS services
+       and hosts using a graphical interface.  It also provides for desktop
+       notifications when the status of services or hosts change.
+
+       When invoked as avahi-ssh-selector, av-applet pops up the SSH selector.
+
+       When invoked as avahi-rdf-selector, av-applet pops up the RFD selector.
+
+       When invoked as avahi-snmp-selector, av-applet pops up the SNMP
+       selector.
+
+       When invoked as avahi-xdmcp-selector, av-applet pops up the XDMCP
+       selector.
+
+SEE ALSO
+       avahi-daemon(8)
+
+LICENSE
+       perl/GPL
+
+AUTHOR
+       Brian F. G. Bidulock <bidulock@openss7.org>
+
+
+
+perl v5.18.2                      2014-05-13                      AV-APPLET(1)
