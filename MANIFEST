@@ -1,0 +1,17 @@
+CHANGES
+Makefile.PL
+MANIFEST
+MANIFEST.SKIP
+avahi-applet
+avahi.pl
+avahi-rfb-selector
+avahi-snmp-selector
+avahi-ssh
+avahi-ssh-selector
+README
+TODO
+avahi-applet.desktop
+avahi-rfb-selector.desktop
+avahi-snmp-selector.desktop
+avahi-ssh.desktop
+avahi-ssh-selector.desktop
