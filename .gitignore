@@ -1,0 +1,12 @@
+.*.sw[nop]
+MYMETA.json
+MYMETA.yml
+Makefile
+Makefile.old
+avahi-applet-*-any.pkg.tar.xz
+avahi-applet-*.src.tar.gz
+avahi-applet-*.tar.gz
+*.log
+blib/
+pm_to_blib
+_install
